@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="display">00:00:00</div>
+    <div id="buttons">
+      <button class="button" data-action="start">Start</button>
+      <button class="button" data-action="stop">Stop</button>
+      <button class="button" data-action="lap">Lap</button>
+      <button class="button" data-action="resume">Resume</button>
+      <button class="button" data-action="reset">Reset</button>
+    </div>
+    <div class="container">
+      <div id="totalLaps"></div>
+      <div id="laps"></div>
+  </div>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="src/stopwatch.js"></script>
+</body>
+</html>

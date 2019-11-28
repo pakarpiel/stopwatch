@@ -1,0 +1,6 @@
+.container {
+    display: flex;
+}
+#totalLaps, #laps {
+    margin: 10px
+}
