@@ -2,6 +2,11 @@ class Stopwatch {
     constructor(){
         this.display = $("#display");
         this.buttonsContainer = $("#buttons");
+        this.startButton = $("button[data-action = 'start']");
+        this.stopButton = $("button[data-action = 'stop']");
+        this.lapButton = $("button[data-action = 'lap']");
+        this.resumeButton = $("button[data-action = 'resume']");
+        this.resetButton = $("button[data-action = 'reset']");
         this.totalLaps = $("#totalLaps");
         this.laps = $("#laps");
         this.interval;
@@ -26,7 +31,6 @@ class Stopwatch {
     };
 
     run(){
-
         let startingTime = new Date();
 
         this.interval = setInterval(() => {
@@ -35,11 +39,21 @@ class Stopwatch {
             this.display.text(this.showTime(this.totalTime));
             // this.showTime(this.totalTime);
         }, 10);
+
+
+        if(this.startButton.hasClass("active")){
+            this.changeButtonsDisplay(this.startButton, this.stopButton, this.lapButton);
+        };
+        if(this.resumeButton.hasClass("active")){
+            this.changeButtonsDisplay(this.resumeButton, this.resetButton, this.stopButton, this.lapButton);
+        };
     }
 
     stop(){
         clearInterval(this.interval);
         this.savedTime = this.totalTime;
+
+        this.changeButtonsDisplay(this.stopButton, this.lapButton, this.resumeButton, this.resetButton);
     }
 
     lap(){
@@ -53,8 +67,7 @@ class Stopwatch {
         totalLap.text(this.showTime(this.totalTime));
 
         this.laps.prepend(lap);
-        this.totalLaps.prepend(totalLap);
-       
+        this.totalLaps.prepend(totalLap);      
     }
 
     reset(){
@@ -63,6 +76,8 @@ class Stopwatch {
 
         this.laps.html("");
         this.totalLaps.html("");
+
+        this.changeButtonsDisplay(this.resumeButton, this.resetButton, this.startButton);
     }
 
     showTime(miliseconds){
@@ -76,10 +91,15 @@ class Stopwatch {
         let seconds = sec < 10 ? `0${sec}` : `${sec}`;
         let milliseconds = ms < 10 ? `0${ms}` : `${ms}`;
 
-        // this.display.text(`${minutes}:${seconds}:${milliseconds}`);
         return `${minutes}:${seconds}:${milliseconds}`;
 
-    }  
+    } 
+    
+    changeButtonsDisplay(...buttons){
+        for(let i=0; i<buttons.length; i++){
+            buttons[i].toggleClass("active")
+        }
+    }
 
 }
 

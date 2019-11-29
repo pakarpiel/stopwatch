@@ -1,6 +1,15 @@
+.button {
+    display: none
+}
+
+.active {
+    display: inline-block
+}
+
 .container {
     display: flex;
 }
+
 #totalLaps, #laps {
     margin: 10px
 }
