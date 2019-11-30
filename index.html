@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stopwatch</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="container">
     <div id="display">00:00:00</div>
     <div id="buttons">
       <button class="button active" data-action="start">Start</button>
@@ -16,9 +18,11 @@
       <button class="button" data-action="resume">Resume</button>
       <button class="button" data-action="reset">Reset</button>
     </div>
-    <div class="container">
+    <div id="lapsContainer">
+      <div id="lapsCounter"></div>
       <div id="totalLaps"></div>
       <div id="laps"></div>
+    </div>
   </div>
     <script
   src="https://code.jquery.com/jquery-3.4.1.js"

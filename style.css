@@ -1,15 +1,63 @@
-.button {
-    display: none
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 62.5%;
+    color: #101F35;
+}
+#container {
+    width: 300px;
+    margin: 75px auto;
+}
+#display{
+    padding: 2rem 0;
+    font-size: 6.5rem;
+    text-align: center;
 }
 
+.button {
+    display: none;
+    width: 150px;
+    padding: 0.8rem 0;
+    color: #101F35;
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:first-child {
+    width: 300px;
+    color: #101F35;
+}
+
+button:nth-child(2){
+    color: #DB0C08
+}
+button:nth-child(4){
+    color: #348913
+}
 .active {
     display: inline-block
 }
 
-.container {
+#buttons, #lapsContainer {
     display: flex;
+    justify-content: space-between;
 }
 
-#totalLaps, #laps {
-    margin: 10px
+#lapsCounter, #totalLaps, #laps {
+    margin: 0.7rem;
+    text-align: center;
+}
+#laps {
+    color:#4A6082;
+}
+p {
+    margin: 1rem;
+    font-size: 2rem;
 }
