@@ -71,6 +71,7 @@ class Stopwatch {
     reset(){
         this.display.text("00:00:00");
         this.savedTime = 0;
+        this.lastLapTime = 0;
         this.counter = 0;
         this.lapsCounter.html("");
         this.laps.html("");
