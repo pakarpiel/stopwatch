@@ -7,11 +7,13 @@ class Stopwatch {
         this.lapButton = $("button[data-action = 'lap']");
         this.resumeButton = $("button[data-action = 'resume']");
         this.resetButton = $("button[data-action = 'reset']");
+        this.counter = 0;
+        this.lapsCounter = $("#lapsCounter")
         this.totalLaps = $("#totalLaps");
         this.laps = $("#laps");
         this.interval;
         this.savedTime = 0;
-        this.lapTime = 0;
+        this.lastLapTime = 0;
         this.runningTime;
         this.totalTime;
         
@@ -37,7 +39,6 @@ class Stopwatch {
             this.runningTime = new Date() - startingTime;
             this.totalTime = this.savedTime + this.runningTime;
             this.display.text(this.showTime(this.totalTime));
-            // this.showTime(this.totalTime);
         }, 10);
 
 
@@ -57,23 +58,21 @@ class Stopwatch {
     }
 
     lap(){
-        
-        let startingTime = this.totalTime - this.lapTime;
-        this.lapTime = this.totalTime;
-        let lap = $("<p></p>");
-        lap.text(this.showTime(startingTime));
+        this.counter++;   
+        let lapTime = this.totalTime - this.lastLapTime;
+        this.lastLapTime = this.totalTime;
 
-        let totalLap = $("<p></p>");
-        totalLap.text(this.showTime(this.totalTime));
-
-        this.laps.prepend(lap);
-        this.totalLaps.prepend(totalLap);      
+        this.lapsCounter.prepend($("<p></p>").text(this.counter));
+        this.totalLaps.prepend($("<p></p>").text(this.showTime(this.totalTime))); 
+        this.laps.prepend($("<p></p>").text(this.showTime(lapTime)));
+          
     }
 
     reset(){
         this.display.text("00:00:00");
         this.savedTime = 0;
-
+        this.counter = 0;
+        this.lapsCounter.html("");
         this.laps.html("");
         this.totalLaps.html("");
 
@@ -92,7 +91,6 @@ class Stopwatch {
         let milliseconds = ms < 10 ? `0${ms}` : `${ms}`;
 
         return `${minutes}:${seconds}:${milliseconds}`;
-
     } 
     
     changeButtonsDisplay(...buttons){
