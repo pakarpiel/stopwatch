@@ -9,8 +9,10 @@ html {
     color: #101F35;
 }
 #container {
-    width: 300px;
+    display: flex;
     margin: 75px auto;
+    flex-direction: column;
+    align-items: center;
 }
 #display{
     padding: 2rem 0;
@@ -18,18 +20,38 @@ html {
     text-align: center;
 }
 
+#buttons {
+    display: flex;
+    margin-bottom: 13px;
+    justify-content: center;
+}
+
 .button {
     display: none;
-    width: 150px;
-    padding: 0.8rem 0;
+    min-width: 150px;
+    padding: 0.8rem 0.4rem;
     color: #101F35;
     background-color: transparent;
     font-family: 'Roboto', sans-serif;
     font-size: 2.8rem;
     text-transform: uppercase;
     font-weight: bold;
+    outline: none;
     cursor: pointer;
 }
+@media (max-width: 425px){
+    .button:not(:first-child) {
+        font-size: 2.4rem;
+        padding: 1.05rem 0.8rem;
+    }
+}
+@media (max-width: 355px){
+    .button:not(:first-child) {
+        font-size: 2rem;
+        padding: 1.3rem 1.2rem;
+    }
+}
+
 button:first-child {
     width: 300px;
     color: #101F35;
@@ -42,11 +64,13 @@ button:nth-child(4){
     color: #348913
 }
 .active {
-    display: inline-block
+    display: inline-block;
+    min-width: 150px;
 }
 
-#buttons, #lapsContainer {
+#lapsContainer {
     display: flex;
+    width: 300px;
     justify-content: space-between;
 }
 
